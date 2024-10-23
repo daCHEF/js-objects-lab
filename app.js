@@ -92,11 +92,13 @@ Exercise 6
 Solve Exercise 6 here:
 */
 
-games.gyms.forEach((gym) => {
-  if(gym.difficulty < 3) {
-    gym.completed = true
+game.gyms.forEach((gym) => {
+  if (gym.difficulty < 3) {
+    gym.completed = true;
   }
-})
+});
+
+console.log(game.gyms);
 
 
 /*
