@@ -64,7 +64,7 @@ Exercise 4
 Solve Exercise 4 here:
 */
 
-game.party.push(pokemon.find((entry) => (entry.name === ('Squirtle'))))
+game.party.push(pokemon.find((entry) => (entry.name === ('Pikachu'))))
 
 console.log(game.party)
 
@@ -78,6 +78,10 @@ Exercise 5
 Solve Exercise 5 here:
 */
 
+game.party.push(pokemon.find((entry) => (entry.number === (150))))
+
+console.log(game.party)
+
 
 /*
 Exercise 6
@@ -87,6 +91,13 @@ Exercise 6
 
 Solve Exercise 6 here:
 */
+
+games.gyms.forEach((gym) => {
+  if(gym.difficulty < 3) {
+    gym.completed = true
+  }
+})
+
 
 /*
 Exercise 7
