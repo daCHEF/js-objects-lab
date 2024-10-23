@@ -64,7 +64,9 @@ Exercise 4
 Solve Exercise 4 here:
 */
 
+game.party.push(pokemon.find((entry) => (entry.name === ('Squirtle'))))
 
+console.log(game.party)
 
 
 /*
