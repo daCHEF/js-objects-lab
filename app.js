@@ -37,26 +37,25 @@ const findPokemonByNumber = (num) => {
 }
 
 console.log(findPokemonByNumber(59).name)
-console.log(findPokemonByNumber(132).name)
-console.log(game)
+console.log(findPokemonByNumber(150).name)
 
 
-/*
-Exercise 3
+/* Exercise 3 --------------------------------------------------------
 1. Add a new property to the `game` object. Let's call it "difficulty".
-2. Choose a value for "difficulty" that you think fits the game. Ex: "Easy", "Med" or "Hard". How would you assign it?
+2. Choose a value for "difficulty" that you think fits the game. 
+   Ex: "Easy", "Med" or "Hard". How would you assign it?
 
 
 Solve Exercise 3 here:
 */
 
 game.difficulty = 'Easy'
+
 console.log(game);
 
 
 
-/*
-Exercise 4
+/* Exercise 4 --------------------------------------------------------
 1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
 2. Add this Pokémon to the `game.party` array. Which array method will you use to add them?
 
@@ -64,13 +63,11 @@ Exercise 4
 Solve Exercise 4 here:
 */
 
-game.party.push(pokemon.find((entry) => (entry.name === ('Pikachu'))))
-
-console.log(game.party)
+game.party.push(pokemon.find(entry => entry.name === 'Pikachu' && entry.starter))
 
 
-/*
-Exercise 5
+
+/* Exercise 5 --------------------------------------------------------
 1. Choose three more Pokémon from the `pokemon` array and add them to your party.
 2. Consider different attributes like 'type' or 'HP' for your selection. Which array method will you use to add them?
 
@@ -78,13 +75,16 @@ Exercise 5
 Solve Exercise 5 here:
 */
 
-game.party.push(pokemon.find((entry) => (entry.number === (150))))
+const selectedPokemon = pokemon.filter((entry) => [39, 150, 113].includes(entry.number));
 
-console.log(game.party)
+selectedPokemon.forEach((poke) => {
+  game.party.push(poke);
+});
+
+console.log(game.party);;
 
 
-/*
-Exercise 6
+/* Exercise 6 --------------------------------------------------------
 1. Set the `completed` property to true for gyms with a difficulty below 3.
 2. Think about how you'd loop through the `gyms` array to check and update the `completed` property.
 
@@ -101,8 +101,7 @@ game.gyms.forEach((gym) => {
 console.log(game.gyms);
 
 
-/*
-Exercise 7
+/* Exercise 7 --------------------------------------------------------
 1. Evolve the starter Pokémon you added to your party earlier. Each starter Pokémon evolves into a specific one.
 2. How would you replace the current starter Pokémon in your party with its evolved form?
 
@@ -118,6 +117,12 @@ More Hints: The existing starter Pokemon will be *replaced* in your party with t
 Solve Exercise 7 here:
 */
 
+const evolvedPokemon = pokemon.find((entry) => entry.number === 26)
+game.party.splice(0, 1, evolvedPokemon);
+
+console.log(game.party);
+
+
 /*
 Exercise 8
 1. Print the name of each Pokémon in your party.
@@ -125,6 +130,8 @@ Exercise 8
 
 Solve Exercise 8 here:
 */
+
+
 
 /*
 Exercise 9
