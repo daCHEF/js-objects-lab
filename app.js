@@ -181,6 +181,9 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 
+game.catchPokemon = (pokemonObj) => game.party.push(pokemonObj);
+  game.pokeball
+
 
 /*
 Exercise 12
