@@ -131,6 +131,9 @@ Exercise 8
 Solve Exercise 8 here:
 */
 
+game.party.forEach((pokemon) => {
+  console.log(pokemon.name);
+});
 
 
 /*
@@ -141,6 +144,10 @@ Exercise 9
 
 Solve Exercise 9 here:
 */
+
+pokemon.forEach((pokemon.starter) => {
+  console.log(pokemon.name);
+});
 
 
 /*
