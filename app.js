@@ -1,44 +1,43 @@
-const pokemon = require('./data.js')
+const pokemon = require("./data.js");
 const game = {
-    party: [],
-    gyms: [
-      { location: "Pewter City", completed: false, difficulty: 1 },
-      { location: "Cerulean City", completed: false, difficulty: 2 },
-      { location: "Vermilion City", completed: false, difficulty: 3 },
-      { location: "Celadon City", completed: false, difficulty: 4 },
-      { location: "Fuchsia City", completed: false, difficulty: 5 },
-      { location: "Saffron City", completed: false, difficulty: 6 },
-      { location: "Cinnabar Island", completed: false, difficulty: 7 },
-      { location: "Viridian City", completed: false, difficulty: 8 },
-    ],
-    items: [
-      { name: "potion", quantity: 4 },
-      { name: "pokeball", quantity: 8 },
-      { name: "rare candy", quantity: 99 },
-    ],
-  }
+  party: [],
+  gyms: [
+    { location: "Pewter City", completed: false, difficulty: 1 },
+    { location: "Cerulean City", completed: false, difficulty: 2 },
+    { location: "Vermilion City", completed: false, difficulty: 3 },
+    { location: "Celadon City", completed: false, difficulty: 4 },
+    { location: "Fuchsia City", completed: false, difficulty: 5 },
+    { location: "Saffron City", completed: false, difficulty: 6 },
+    { location: "Cinnabar Island", completed: false, difficulty: 7 },
+    { location: "Viridian City", completed: false, difficulty: 8 },
+  ],
+  items: [
+    { name: "potion", quantity: 4 },
+    { name: "pokeball", quantity: 8 },
+    { name: "rare candy", quantity: 99 },
+  ],
+};
 /*
 - Find the index of the pokemon w/# 59
 - Hint: the numbers are non-indexed, so the index might be # 1
 */
 
 // Easy Answer
-console.log(pokemon[58])
+console.log(pokemon[58]);
 
 //Medium
-const getPokemon = (pokemon) => pokemon.number === 59
-const pokemonToFind  = pokemon.findIndex(getPokemon)
-console.log(pokemon[pokemonToFind].name)
+const getPokemon = (pokemon) => pokemon.number === 59;
+const pokemonToFind = pokemon.findIndex(getPokemon);
+console.log(pokemon[pokemonToFind].name);
 
 //Hard - don't use loop, dont hard code the number
 const findPokemonByNumber = (num) => {
-  const idx = pokemon.findIndex((pokeman) => pokeman.number === num)
-  return pokemon[idx]
-}
+  const idx = pokemon.findIndex((pokeman) => pokeman.number === num);
+  return pokemon[idx];
+};
 
-console.log(findPokemonByNumber(59).name)
-console.log(findPokemonByNumber(150).name)
-
+console.log(findPokemonByNumber(59).name);
+console.log(findPokemonByNumber(150).name);
 
 /* Exercise 3 --------------------------------------------------------
 1. Add a new property to the `game` object. Let's call it "difficulty".
@@ -49,11 +48,9 @@ console.log(findPokemonByNumber(150).name)
 Solve Exercise 3 here:
 */
 
-game.difficulty = 'Easy'
+game.difficulty = "Easy";
 
 console.log(game);
-
-
 
 /* Exercise 4 --------------------------------------------------------
 1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
@@ -63,9 +60,9 @@ console.log(game);
 Solve Exercise 4 here:
 */
 
-game.party.push(pokemon.find(entry => entry.name === 'Pikachu' && entry.starter))
-
-
+game.party.push(
+  pokemon.find((entry) => entry.name === "Pikachu" && entry.starter)
+);
 
 /* Exercise 5 --------------------------------------------------------
 1. Choose three more Pokémon from the `pokemon` array and add them to your party.
@@ -75,14 +72,15 @@ game.party.push(pokemon.find(entry => entry.name === 'Pikachu' && entry.starter)
 Solve Exercise 5 here:
 */
 
-const selectedPokemon = pokemon.filter((entry) => [39, 150, 113].includes(entry.number));
+const selectedPokemon = pokemon.filter((entry) =>
+  [39, 150, 113].includes(entry.number)
+);
 
 selectedPokemon.forEach((poke) => {
   game.party.push(poke);
 });
 
-console.log(game.party);;
-
+console.log(game.party);
 
 /* Exercise 6 --------------------------------------------------------
 1. Set the `completed` property to true for gyms with a difficulty below 3.
@@ -100,7 +98,6 @@ game.gyms.forEach((gym) => {
 
 console.log(game.gyms);
 
-
 /* Exercise 7 --------------------------------------------------------
 1. Evolve the starter Pokémon you added to your party earlier. Each starter Pokémon evolves into a specific one.
 2. How would you replace the current starter Pokémon in your party with its evolved form?
@@ -117,11 +114,10 @@ More Hints: The existing starter Pokemon will be *replaced* in your party with t
 Solve Exercise 7 here:
 */
 
-const evolvedPokemon = pokemon.find((entry) => entry.number === 26)
+const evolvedPokemon = pokemon.find((entry) => entry.number === 26);
 game.party.splice(0, 1, evolvedPokemon);
 
 console.log(game.party);
-
 
 /* Exercise 8 ------------------------------------------------------------------------
 1. Print the name of each Pokémon in your party.
@@ -134,7 +130,6 @@ game.party.forEach((pokemon) => {
   console.log(pokemon.name);
 });
 
-
 /* Exercise 9 ------------------------------------------------------------------------
 1. Can you print out all the starter Pokémon from the `pokemon` array?
 2. Think about how you can identify a starter Pokémon and then log their names.
@@ -144,10 +139,8 @@ Solve Exercise 9 here:
 */
 
 pokemon.forEach((pokemon) => {
-  if (pokemon.starter)
-  console.log(pokemon.name);
+  if (pokemon.starter) console.log(pokemon.name);
 });
-
 
 /* Exercise 10
 Create a method called `catchPokemon` and add it to the `game` object. You should not need to edit the original game object directly. This method should:
@@ -162,11 +155,16 @@ Solve Exercise 10 here:
 
 game.catchPokemon = (pokemonObj) => game.party.push(pokemonObj);
 
-const Snorlax = { number: 143, name: "Snorlax", type: "normal", hp: 160, starter: false };
+const Snorlax = {
+  number: 143,
+  name: "Snorlax",
+  type: "normal",
+  hp: 160,
+  starter: false,
+};
 game.catchPokemon(Snorlax);
 
 console.log(game.party);
-
 
 /*
 Exercise 11
@@ -181,9 +179,17 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 
-game.catchPokemon = (pokemonObj) => game.party.push(pokemonObj);
-  game.pokeball
+const Gyarados = {
+  number: 130, 
+  name: "Gyarados", 
+  type: "water", 
+  hp: 95, 
+  starter: false
+};
+game.catchPokemon(Gyarados);
 
+
+console.log(game.items);
 
 /*
 Exercise 12
@@ -192,7 +198,13 @@ Exercise 12
 
 Solve Exercise 12 here:
 */
+game.gyms.forEach((gym) => {
+  if (gym.difficulty < 6) {
+    gym.completed = true;
+  }
+});
 
+console.log(game.gyms);
 
 /*
 Exercise 13
@@ -218,6 +230,10 @@ Solve Exercise 13 here:
 */
 
 
+game.gymStatus.forEach((gym) => {
+  if (gym.completed === true);
+});
+
 /*
 Exercise 14
 1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
@@ -230,7 +246,6 @@ This method should:
 Solve Exercise 14 here:
 */
 
-
 /*
 Exercise 15
 1. Now, complete gyms with a difficulty below 8. Reflect on how this is similar to or different from the previous gym exercises.
@@ -239,7 +254,6 @@ Exercise 15
 Solve Exercise 15 here:
 */
 
-
 /*
 Exercise 16
 1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
@@ -247,4 +261,3 @@ Exercise 16
 
 Solve Exercise 16 here:
 */
-
