@@ -39,7 +39,7 @@ const findPokemonByNumber = (num) => {
 console.log(findPokemonByNumber(59).name);
 console.log(findPokemonByNumber(150).name);
 
-/* Exercise 3 --------------------------------------------------------
+/* Exercise 3 ---------------------------------------------------------------------------
 1. Add a new property to the `game` object. Let's call it "difficulty".
 2. Choose a value for "difficulty" that you think fits the game. 
    Ex: "Easy", "Med" or "Hard". How would you assign it?
@@ -52,7 +52,7 @@ game.difficulty = "Easy";
 
 console.log(game);
 
-/* Exercise 4 --------------------------------------------------------
+/* Exercise 4 ---------------------------------------------------------------------------
 1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
 2. Add this Pokémon to the `game.party` array. Which array method will you use to add them?
 
@@ -64,7 +64,7 @@ game.party.push(
   pokemon.find((entry) => entry.name === "Pikachu" && entry.starter)
 );
 
-/* Exercise 5 --------------------------------------------------------
+/* Exercise 5 ---------------------------------------------------------------------------
 1. Choose three more Pokémon from the `pokemon` array and add them to your party.
 2. Consider different attributes like 'type' or 'HP' for your selection. Which array method will you use to add them?
 
@@ -82,7 +82,7 @@ selectedPokemon.forEach((poke) => {
 
 console.log(game.party);
 
-/* Exercise 6 --------------------------------------------------------
+/* Exercise 6 ---------------------------------------------------------------------------
 1. Set the `completed` property to true for gyms with a difficulty below 3.
 2. Think about how you'd loop through the `gyms` array to check and update the `completed` property.
 
@@ -98,7 +98,7 @@ game.gyms.forEach((gym) => {
 
 console.log(game.gyms);
 
-/* Exercise 7 --------------------------------------------------------
+/* Exercise 7 ---------------------------------------------------------------------------
 1. Evolve the starter Pokémon you added to your party earlier. Each starter Pokémon evolves into a specific one.
 2. How would you replace the current starter Pokémon in your party with its evolved form?
 
@@ -119,7 +119,7 @@ game.party.splice(0, 1, evolvedPokemon);
 
 console.log(game.party);
 
-/* Exercise 8 ------------------------------------------------------------------------
+/* Exercise 8 ---------------------------------------------------------------------------
 1. Print the name of each Pokémon in your party.
 2. Consider using a loop or an array method to access each Pokémon's name.
 
@@ -130,7 +130,7 @@ game.party.forEach((pokemon) => {
   console.log(pokemon.name);
 });
 
-/* Exercise 9 ------------------------------------------------------------------------
+/* Exercise 9 ---------------------------------------------------------------------------
 1. Can you print out all the starter Pokémon from the `pokemon` array?
 2. Think about how you can identify a starter Pokémon and then log their names.
 
@@ -142,7 +142,7 @@ pokemon.forEach((pokemon) => {
   if (pokemon.starter) console.log(pokemon.name);
 });
 
-/* Exercise 10
+/* Exercise 10 --------------------------------------------------------------------------
 Create a method called `catchPokemon` and add it to the `game` object. You should not need to edit the original game object directly. This method should:
   - Accept an object as a parameter called `pokemonObj`
   - Add the `pokemonObj` to the `game.party` array.
@@ -166,8 +166,7 @@ game.catchPokemon(Snorlax);
 
 console.log(game.party);
 
-/*
-Exercise 11
+/* Exercise 11 --------------------------------------------------------------------------
 1. Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify it so that it also decreases the number of pokeballs in your inventory each time you catch a Pokémon.
 2. How will you find and update the quantity of pokeballs in the `game.items` array?
 
@@ -179,20 +178,30 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 
+game.catchPokemon = (pokemonObj) => { 
+  game.party.push(pokemonObj);
+
+const pokeball = game.items.find(item => item.name === 'pokeball');
+if (pokeball) {
+  pokeball.quantity-=1;
+} else {
+  console.log('You not catching sh...!');
+}
+console.log(`Caught ${pokemonObj.name}! Poké Balls remaining: ${pokeball.quantity}`);
+};
+
 const Gyarados = {
   number: 130, 
   name: "Gyarados", 
   type: "water", 
   hp: 95, 
   starter: false
-};
+}
 game.catchPokemon(Gyarados);
-
 
 console.log(game.items);
 
-/*
-Exercise 12
+/* Exercise 12 --------------------------------------------------------------------------
 1. Similar to Exercise 6, now complete gyms with a difficulty below 6. How will you approach this?
  (change the value of `complete` in the qualifying objects from false to true).
 
@@ -206,8 +215,7 @@ game.gyms.forEach((gym) => {
 
 console.log(game.gyms);
 
-/*
-Exercise 13
+/* Exercise 13 --------------------------------------------------------------------------
 1. Create a `gymStatus` method in `game` to tally completed and incomplete gyms.
 2. How will you iterate through the `gyms` array and update the tally? Remember to log the final tally.
 
@@ -228,14 +236,15 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 
 Solve Exercise 13 here:
 */
+// const gymTally = () => (completed, incomplete);
 
+// game.gymStatus.forEach((gym) => {
+//   if (gymStatus === true); {
+//     console.log()
+//   }
+// });
 
-game.gymStatus.forEach((gym) => {
-  if (gym.completed === true);
-});
-
-/*
-Exercise 14
+/* Exercise 14 --------------------------------------------------------------------------
 1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
 
 This method should:
@@ -246,18 +255,31 @@ This method should:
 Solve Exercise 14 here:
 */
 
-/*
-Exercise 15
+game.partyCount = () => {
+  return game.party.length;
+}
+
+
+/* Exercise 15 --------------------------------------------------------------------------
 1. Now, complete gyms with a difficulty below 8. Reflect on how this is similar to or different from the previous gym exercises.
 (change the value of `complete` in the qualifying objects from false to true).
 
 Solve Exercise 15 here:
 */
 
-/*
-Exercise 16
+game.gyms.forEach((gym) => {
+  if (gym.difficulty < 8) {
+    gym.completed = true;
+  }
+});
+
+console.log(game.gyms);
+
+/* Exercise 16 --------------------------------------------------------------------------
 1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
 
 
 Solve Exercise 16 here:
 */
+
+console.log(game);
