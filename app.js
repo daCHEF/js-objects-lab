@@ -236,13 +236,21 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 
 Solve Exercise 13 here:
 */
-// const gymTally = () => (completed, incomplete);
+game.gymStatus = () => {
+  const gymTally = {
+   completed: 0,
+   incomplete: 0
+  };
 
-// game.gymStatus.forEach((gym) => {
-//   if (gymStatus === true); {
-//     console.log()
-//   }
-// });
+  game.gyms.forEach((gym) => {
+    if (gym.completed === true) {
+      gymTally.completed++;
+    } else {
+      gymTally.incomplete++;
+    }
+  });
+  console.log(gymTally);
+};
 
 /* Exercise 14 --------------------------------------------------------------------------
 1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
@@ -257,7 +265,8 @@ Solve Exercise 14 here:
 
 game.partyCount = () => {
   return game.party.length;
-}
+};
+console.log(game.partyCount());
 
 
 /* Exercise 15 --------------------------------------------------------------------------
